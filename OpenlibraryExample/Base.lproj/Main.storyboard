@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="OpenlibraryExample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +17,66 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ISBN" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="BbR-j9-Wp2">
+                                <rect key="frame" x="20" y="57" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                <connections>
+                                    <action selector="textFieldReturn:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="oUb-JV-Ny1"/>
+                                </connections>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Lmd-HM-eld">
+                                <rect key="frame" x="20" y="171" width="563" height="409"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RESULTADO:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWd-4r-ov7">
+                                <rect key="frame" x="250" y="142" width="101" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Indicar el ISBN:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLu-oo-CSY">
+                                <rect key="frame" x="242" y="28" width="117" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Lmd-HM-eld" firstAttribute="top" secondItem="QWd-4r-ov7" secondAttribute="bottom" constant="8" id="EAQ-l0-1q3"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Lmd-HM-eld" secondAttribute="leading" id="MNk-nB-cc1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BbR-j9-Wp2" secondAttribute="trailing" id="Nry-iF-nWd"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="BbR-j9-Wp2" secondAttribute="leading" id="P4i-XS-4SL"/>
+                            <constraint firstItem="BbR-j9-Wp2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RTX-9g-WFa"/>
+                            <constraint firstItem="QWd-4r-ov7" firstAttribute="top" secondItem="BbR-j9-Wp2" secondAttribute="bottom" constant="55" id="Ui3-jg-Rsb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Lmd-HM-eld" secondAttribute="trailing" constant="-3" id="WPT-dd-iIO"/>
+                            <constraint firstItem="JLu-oo-CSY" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="jSW-ag-xrS"/>
+                            <constraint firstItem="JLu-oo-CSY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jgR-Xs-Cjk"/>
+                            <constraint firstItem="JLu-oo-CSY" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="lzR-2k-w3g"/>
+                            <constraint firstItem="JLu-oo-CSY" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="r0h-tK-6JS"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Lmd-HM-eld" secondAttribute="bottom" constant="20" id="rtX-ab-OpK"/>
+                            <constraint firstItem="BbR-j9-Wp2" firstAttribute="top" secondItem="JLu-oo-CSY" secondAttribute="bottom" constant="8" id="tQs-Pj-Dya"/>
+                            <constraint firstItem="QWd-4r-ov7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="utm-sd-MA0"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="jSW-ag-xrS"/>
+                                <exclude reference="lzR-2k-w3g"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="isbnTextfield" destination="BbR-j9-Wp2" id="uMO-35-1Q3"/>
+                        <outlet property="resultTextView" destination="Lmd-HM-eld" id="Cpc-3a-xVf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="305" y="634"/>
         </scene>
     </scenes>
 </document>
