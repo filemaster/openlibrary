@@ -27,40 +27,42 @@
                                 </connections>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Lmd-HM-eld">
-                                <rect key="frame" x="20" y="171" width="563" height="409"/>
+                                <rect key="frame" x="20" y="382" width="563" height="198"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RESULTADO:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWd-4r-ov7">
-                                <rect key="frame" x="250" y="142" width="101" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Indicar el ISBN:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLu-oo-CSY">
                                 <rect key="frame" x="242" y="28" width="117" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FUw-oN-QXF">
+                                <rect key="frame" x="20" y="95" width="560" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="Wup-Wg-cuC"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Lmd-HM-eld" firstAttribute="top" secondItem="QWd-4r-ov7" secondAttribute="bottom" constant="8" id="EAQ-l0-1q3"/>
+                            <constraint firstItem="FUw-oN-QXF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3eC-9t-mHn"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Lmd-HM-eld" secondAttribute="leading" id="MNk-nB-cc1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BbR-j9-Wp2" secondAttribute="trailing" id="Nry-iF-nWd"/>
                             <constraint firstAttribute="leadingMargin" secondItem="BbR-j9-Wp2" secondAttribute="leading" id="P4i-XS-4SL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="FUw-oN-QXF" secondAttribute="trailing" id="Qk8-Ny-ejY"/>
                             <constraint firstItem="BbR-j9-Wp2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RTX-9g-WFa"/>
-                            <constraint firstItem="QWd-4r-ov7" firstAttribute="top" secondItem="BbR-j9-Wp2" secondAttribute="bottom" constant="55" id="Ui3-jg-Rsb"/>
+                            <constraint firstItem="FUw-oN-QXF" firstAttribute="top" secondItem="BbR-j9-Wp2" secondAttribute="bottom" constant="8" id="TMW-Ga-tx5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Lmd-HM-eld" secondAttribute="trailing" constant="-3" id="WPT-dd-iIO"/>
                             <constraint firstItem="JLu-oo-CSY" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="jSW-ag-xrS"/>
                             <constraint firstItem="JLu-oo-CSY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jgR-Xs-Cjk"/>
                             <constraint firstItem="JLu-oo-CSY" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="lzR-2k-w3g"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="FUw-oN-QXF" secondAttribute="leading" id="nYD-oC-qYM"/>
                             <constraint firstItem="JLu-oo-CSY" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="r0h-tK-6JS"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Lmd-HM-eld" secondAttribute="bottom" constant="20" id="rtX-ab-OpK"/>
                             <constraint firstItem="BbR-j9-Wp2" firstAttribute="top" secondItem="JLu-oo-CSY" secondAttribute="bottom" constant="8" id="tQs-Pj-Dya"/>
-                            <constraint firstItem="QWd-4r-ov7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="utm-sd-MA0"/>
+                            <constraint firstItem="Lmd-HM-eld" firstAttribute="top" secondItem="FUw-oN-QXF" secondAttribute="bottom" constant="37" id="vKN-To-C4c"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -70,6 +72,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="cover" destination="FUw-oN-QXF" id="AfP-Ej-Frq"/>
                         <outlet property="isbnTextfield" destination="BbR-j9-Wp2" id="uMO-35-1Q3"/>
                         <outlet property="resultTextView" destination="Lmd-HM-eld" id="Cpc-3a-xVf"/>
                     </connections>

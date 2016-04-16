@@ -42,6 +42,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var isbnTextfield: UITextField!
     @IBOutlet weak var resultTextView: UITextView!
+    @IBOutlet weak var cover: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,11 +61,49 @@ class ViewController: UIViewController {
         let urlStr = baseURL + "/api/books?jscmd=data&format=" + responseFormat + "&bibkeys=" + isbnTextfield.text!
         
         // En caso de error, informar al usuario.
-        if let url = NSURL(string: urlStr), let datos:NSData? = NSData(contentsOfURL: url){
-            let texto = NSString(data: datos!, encoding: NSUTF8StringEncoding)
-            resultTextView.text = (texto! as String)
+        if let url = NSURL(string: urlStr), let datos:NSData = NSData(contentsOfURL: url){
+//            let texto = NSString(data: datos!, encoding: NSUTF8StringEncoding)
+//            resultTextView.text = (texto! as String)
+            
+            do{
+                let json = try NSJSONSerialization.JSONObjectWithData(datos, options: .MutableLeaves)
+                let dico = json as! NSDictionary
+                
+                if dico.count == 0 {
+                    cover.image = nil
+                    resultTextView.text = "No se puede encontrar el libro"
+                    return
+                }
+                
+                let isbn = isbnTextfield.text! as NSString
+                let libro = dico[isbn] as! NSDictionary
+                let result = libro["title"] as! String
+                var message = "Titulo: \(result)\n"
+                let autores = libro["authors"] as! NSArray
+                if autores.count > 1{
+                    message += "Autores:\n"
+                    for autor in autores{
+                        message += "\t\(autor["name"])"
+                    }
+                }else if autores.count == 1{
+                    let nombre = autores.firstObject!["name"] as! NSString
+                    message += "Autor: \(nombre)"
+                }
+                
+                resultTextView.text = message
+                let imageURL = NSURL(string: "http://covers.openlibrary.org/b/isbn/\(isbn)-L.jpg")!
+                let image = NSData(contentsOfURL: imageURL)!
+                cover.image = UIImage(data: image)
+                
+            }catch _{
+                
+            }
         }else{
-            resultTextView.text = "Parece que hay algún problema con la conexión."
+            let message = "Parece que hay algún problema con la conexión."
+            resultTextView.text = message
+            let alert = UIAlertController(title: "Alerta", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Cerrar", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
         }
     }
     
